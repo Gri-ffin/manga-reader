@@ -17,7 +17,7 @@ export default function Home({ mangaIds }) {
 
   return (
     <Box>
-      <Center fontSize={30}>Latest Updates</Center>
+      <Center fontSize={30}>Latest Uploads</Center>
       <SimpleGrid columns={2} spacing={10}>
         {mangas?.map(manga => {
           return (
@@ -34,7 +34,9 @@ export default function Home({ mangaIds }) {
 }
 
 export async function getServerSideProps() {
-  const { data } = await axios.get('https://api.mangadex.org/manga');
+  const { data } = await axios.get('https://api.mangadex.org/manga', {
+    params: {}
+  });
   return {
     props: {
       mangaIds: data.data.map(manga => manga.id)
