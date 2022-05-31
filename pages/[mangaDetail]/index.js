@@ -11,10 +11,13 @@ const MangaDetail = ({ mangaDetail }) => {
       <Flex
         justifyItems='center'
         alignItems={{ sm: 'center', md: 'normal' }}
-        flexDir={{ sm: 'column', md: 'row' }}
-        flex={1}
+        flexDir={{ base: 'column', md: 'row' }}
       >
-        <Box marginLeft={{ md: 20 }} lineHeight={7}>
+        <Box
+          marginLeft={{ md: 20 }}
+          lineHeight={7}
+          textAlign={{ base: 'center', md: 'start' }}
+        >
           <Image
             w={96}
             h='xl'
