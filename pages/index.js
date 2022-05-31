@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Center, Flex, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Center, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import axios from 'axios';
 
 export default function Home({ mangaIds }) {
