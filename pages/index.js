@@ -23,8 +23,15 @@ export default function Home({ mangaIds }) {
           return (
             <Box key={manga.id}>
               <Center flexDir='column'>
-                <Image src={manga.coverImage} w='50%' alt={manga.title} />
-                <Text>{manga.title}</Text>
+                <Image
+                  src={manga.coverImage}
+                  w='50%'
+                  height='10%'
+                  alt={manga.title}
+                />
+                <Text noOfLines={1} fontSize={{ sm: 'sm', md: 'md' }}>
+                  {manga.title}
+                </Text>
               </Center>
             </Box>
           );
