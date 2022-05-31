@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Center, Image, SimpleGrid } from '@chakra-ui/react';
+import { Box, Center, Flex, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import axios from 'axios';
 
 export default function Home({ mangaIds }) {
@@ -22,8 +22,9 @@ export default function Home({ mangaIds }) {
         {mangas?.map(manga => {
           return (
             <Box key={manga.id}>
-              <Center>
+              <Center flexDir='column'>
                 <Image src={manga.coverImage} w='50%' alt={manga.title} />
+                <Text>{manga.title}</Text>
               </Center>
             </Box>
           );
