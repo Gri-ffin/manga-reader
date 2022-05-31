@@ -17,6 +17,6 @@ export default function handler(req, res) {
   MFA.login('BaylordYama', 'redamohamed0').then(async () => {
     const result = await MFA.Manga.getMultiple(...mangaIds);
     const transformedResult = await transformArray(result);
-    return res.json({ transformedResult });
+    res.json({ transformedResult });
   });
 }
