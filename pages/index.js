@@ -19,7 +19,7 @@ export default function Home({ mangaIds }) {
   return (
     <Box>
       <Center fontSize={30}>Latest Uploads</Center>
-      <SimpleGrid columns={2} spacing={10}>
+      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
         {mangas?.map(manga => {
           return <Manga key={manga.id} manga={manga} />;
         })}
