@@ -5,7 +5,7 @@ import MFA from 'mangadex-full-api';
 const MangaDetail = ({ mangaDetail }) => {
   return (
     <Box my={5} overflowY='scroll'>
-      <Center as='h2' fontSize={{ sm: 32, md: 40 }}>
+      <Center as='h2' fontSize={{ sm: 32, md: 40 }} mb={5}>
         {mangaDetail.title}
       </Center>
       <Flex
