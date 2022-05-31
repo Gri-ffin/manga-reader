@@ -14,8 +14,6 @@ export default function Home({ mangaIds }) {
     fetchMangas();
   }, [mangaIds]);
 
-  console.log(mangas);
-
   return (
     <Box>
       <Center fontSize={30}>Latest Uploads</Center>
