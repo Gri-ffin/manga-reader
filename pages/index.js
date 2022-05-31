@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Center, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import axios from 'axios';
+import Manga from '../components/Manga';
 
 export default function Home({ mangaIds }) {
   const [mangas, setMangas] = useState([]);
@@ -20,21 +21,7 @@ export default function Home({ mangaIds }) {
       <Center fontSize={30}>Latest Uploads</Center>
       <SimpleGrid columns={2} spacing={10}>
         {mangas?.map(manga => {
-          return (
-            <Box key={manga.id}>
-              <Center flexDir='column'>
-                <Image
-                  src={manga.coverImage}
-                  w='50%'
-                  height='10%'
-                  alt={manga.title}
-                />
-                <Text noOfLines={1} fontSize={{ sm: 'sm', md: 'md' }}>
-                  {manga.title}
-                </Text>
-              </Center>
-            </Box>
-          );
+          return <Manga key={manga.id} manga={manga} />;
         })}
       </SimpleGrid>
     </Box>
