@@ -3,8 +3,6 @@ import axios from 'axios';
 import MFA from 'mangadex-full-api';
 
 const MangaDetail = ({ mangaDetail }) => {
-  console.log(mangaDetail.chapters);
-
   return (
     <Box my={5} overflowY='scroll'>
       <Center as='h2' fontSize={{ sm: 32, md: 40 }}>
