@@ -105,6 +105,7 @@ export async function getStaticProps(context) {
       volume: chapter.volume,
       chapter: chapter.chapter,
       title: chapter.title
+      //TODO: add chapter pages with chapter.getReadablePages()
     };
   });
   transformedChapters.sort((a, b) => {
