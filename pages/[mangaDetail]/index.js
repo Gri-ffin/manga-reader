@@ -6,13 +6,13 @@ const MangaDetail = ({ mangaDetail }) => {
   console.log(mangaDetail.chapters);
 
   return (
-    <Box>
-      <Center as='h2' fontSize={40}>
+    <Box my={5} overflowY='scroll'>
+      <Center as='h2' fontSize={{ sm: 32, md: 40 }}>
         {mangaDetail.title}
       </Center>
       <Flex
         justifyItems='center'
-        alignItems='center'
+        alignItems={{ sm: 'center', md: 'normal' }}
         flexDir={{ sm: 'column', md: 'row' }}
         flex={1}
       >
@@ -64,9 +64,9 @@ const MangaDetail = ({ mangaDetail }) => {
             {mangaDetail.chapters.map(chapter => {
               return (
                 <Text key={chapter.id} my={3} fontWeight='bold'>
-                  Volume {chapter.volume}:{' '}
+                  Chapter {chapter.chapter || '?'}:{' '}
                   <Text as='span' fontWeight='medium'>
-                    {chapter.title}
+                    {chapter.title || '?'}
                   </Text>
                 </Text>
               );
