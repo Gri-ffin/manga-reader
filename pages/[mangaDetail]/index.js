@@ -47,17 +47,11 @@ export async function getStaticProps(context) {
       id: chapter.id,
       volume: chapter.volume,
       chapter: chapter.chapter,
-      title: chapter.title
-      //TODO: add chapter pages with chapter.getReadablePages()
+      title: chapter.title,
+      isExternal: chapter.isExternal,
+      externalUrl: chapter.externalUrl
     };
   });
-  // remove duplicates chapters from transformedChapters
-  const uniqueChapters = transformedChapters.filter(
-    (item, index) =>
-      transformedChapters.findIndex(
-        item2 => item2.chapter === item.chapter && item2.volume === item.volume
-      ) === index
-  );
 
   let returnValue = {
     id: result.id,
@@ -65,7 +59,7 @@ export async function getStaticProps(context) {
     coverImage: resultCover.imageSource,
     description: result.description,
     status: result.status,
-    chapters: uniqueChapters,
+    chapters: transformedChapters,
     contentRating: result.contentRating
   };
 
