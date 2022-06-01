@@ -26,6 +26,7 @@ const ChapterLink = ({ chapter }) => {
           my={2}
           textUnderlineOffset={3}
           href={chapter.externalUrl}
+          isExternal
         >
           Chapter {chapter.chapter || '?'}:{' '}
           <Text as='span' fontWeight='medium'>
