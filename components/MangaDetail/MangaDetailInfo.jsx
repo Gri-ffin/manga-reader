@@ -3,7 +3,7 @@ import ChapterLink from './Chapter/ChapterLink';
 
 const MangaDetailInfo = ({ mangaDetail }) => {
   return (
-    <Box mx={9} w={{ md: '40%' }} alignSelf='start' ml={{ sm: 14 }}>
+    <Box mx={9} w={{ md: '90%' }} alignSelf='start' ml={{ sm: 14 }}>
       <Text as='h3' fontSize={32} textDecor='underline' textUnderlineOffset={3}>
         Description
       </Text>
