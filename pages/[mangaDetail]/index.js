@@ -1,4 +1,4 @@
-import { Box, Center } from '@chakra-ui/react';
+import { Box, Center, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import MFA from 'mangadex-full-api';
 import MangaDetailWrapper from '../../components/MangaDetail/MangaDetailWrapper';
@@ -8,9 +8,15 @@ import MangaDetailInfo from '../../components/MangaDetail/MangaDetailInfo';
 const MangaDetail = ({ mangaDetail }) => {
   return (
     <Box my={5} overflowY='scroll' ml={{ xl: 40 }}>
-      <Center as='h2' fontSize={{ sm: 32, md: 40 }} mb={5}>
+      <Text
+        as='h2'
+        fontSize={{ sm: 32, md: 40 }}
+        mb={5}
+        textAlign='center'
+        mr={{ md: 40 }}
+      >
         {mangaDetail.title}
-      </Center>
+      </Text>
       <MangaDetailWrapper>
         <MangaDetailCover mangaDetail={mangaDetail} />
         <MangaDetailInfo mangaDetail={mangaDetail} />
