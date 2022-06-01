@@ -13,9 +13,9 @@ const ChapterLink = ({ chapter }) => {
             my={2}
             textUnderlineOffset={3}
           >
-            Chapter {chapter.chapter || '?'}:{' '}
+            Chapter {chapter.chapter || '?'}
             <Text as='span' fontWeight='medium'>
-              {chapter.title || '?'}
+              {chapter.title ? ': ' + chapter.title : ''}
             </Text>
           </Link>
         </NextLink>
@@ -28,10 +28,8 @@ const ChapterLink = ({ chapter }) => {
           href={chapter.externalUrl}
           isExternal
         >
-          Chapter {chapter.chapter || '?'}:{' '}
-          <Text as='span' fontWeight='medium'>
-            (Read on external Site) <ExternalSiteSVG />
-          </Text>
+          <ExternalSiteSVG /> Chapter {chapter.chapter}
+          <Text as='span' fontWeight='medium'></Text>
         </Link>
       )}
     </>
