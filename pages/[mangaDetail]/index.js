@@ -60,7 +60,8 @@ export async function getStaticProps(context) {
     description: result.description,
     status: result.status,
     chapters: transformedChapters,
-    contentRating: result.contentRating
+    contentRating: result.contentRating,
+    mal: result.links.mal
   };
 
   return {
