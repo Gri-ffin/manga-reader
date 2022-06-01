@@ -1,4 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
+import ChapterLink from './Chapter/ChapterLink';
 
 const MangaDetailInfo = ({ mangaDetail }) => {
   return (
@@ -20,14 +21,7 @@ const MangaDetailInfo = ({ mangaDetail }) => {
       </Text>
       <Box pt={1} pl={3} overflowY='scroll' h={96} w='full' bg='gray.700'>
         {mangaDetail.chapters.map(chapter => {
-          return (
-            <Text key={chapter.id} my={3} fontWeight='bold'>
-              Chapter {chapter.chapter || '?'}:{' '}
-              <Text as='span' fontWeight='medium'>
-                {chapter.title || '?'}
-              </Text>
-            </Text>
-          );
+          return <ChapterLink key={chapter.id} chapter={chapter} />;
         })}
       </Box>
     </Box>
