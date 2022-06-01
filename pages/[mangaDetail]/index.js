@@ -1,6 +1,9 @@
-import { Box, Center, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import axios from 'axios';
 import MFA from 'mangadex-full-api';
+import MangaDetailWrapper from '../../components/MangaDetail/MangaDetailWrapper';
+import MangaDetailCover from '../../components/MangaDetail/MangaDetailCover';
+import MangaDetailInfo from '../../components/MangaDetail/MangaDetailInfo';
 
 const MangaDetail = ({ mangaDetail }) => {
   return (
@@ -8,73 +11,10 @@ const MangaDetail = ({ mangaDetail }) => {
       <Center as='h2' fontSize={{ sm: 32, md: 40 }} mb={5}>
         {mangaDetail.title}
       </Center>
-      <Flex
-        justifyItems='center'
-        alignItems={{ sm: 'center', md: 'normal' }}
-        flexDir={{ base: 'column', md: 'row' }}
-      >
-        <Box
-          marginLeft={{ md: 20 }}
-          lineHeight={7}
-          textAlign={{ base: 'center', md: 'start' }}
-        >
-          <Image
-            w={96}
-            h='xl'
-            src={mangaDetail.coverImage}
-            alt={mangaDetail.title}
-          />
-          <Text fontWeight='bold' textDecor='underline' textUnderlineOffset={3}>
-            Status:{' '}
-            <Text as='span' fontWeight='medium'>
-              {mangaDetail.status}
-            </Text>
-          </Text>
-          <Text fontWeight='bold' textDecor='underline' textUnderlineOffset={3}>
-            Content Rating:{' '}
-            <Text as='span' fontWeight='medium'>
-              {mangaDetail.contentRating}
-            </Text>
-          </Text>
-        </Box>
-        <Box mx={9} w={{ md: '40%' }} alignSelf='start' ml={{ sm: 14 }}>
-          <Text
-            as='h3'
-            fontSize={32}
-            textDecor='underline'
-            textUnderlineOffset={3}
-          >
-            Description
-          </Text>
-          <Text
-            fontSize={{ sm: 'md', md: 'xl' }}
-            lineHeight={{ base: 7, md: 8 }}
-          >
-            {mangaDetail.description}
-          </Text>
-          <Text
-            as='h3'
-            fontSize={24}
-            my={5}
-            textDecor='underline'
-            textUnderlineOffset={3}
-          >
-            Chapters
-          </Text>
-          <Box pt={1} pl={3} overflowY='scroll' h={96} w='full' bg='gray.700'>
-            {mangaDetail.chapters.map(chapter => {
-              return (
-                <Text key={chapter.id} my={3} fontWeight='bold'>
-                  Chapter {chapter.chapter || '?'}:{' '}
-                  <Text as='span' fontWeight='medium'>
-                    {chapter.title || '?'}
-                  </Text>
-                </Text>
-              );
-            })}
-          </Box>
-        </Box>
-      </Flex>
+      <MangaDetailWrapper>
+        <MangaDetailCover mangaDetail={mangaDetail} />
+        <MangaDetailInfo mangaDetail={mangaDetail} />
+      </MangaDetailWrapper>
     </Box>
   );
 };
