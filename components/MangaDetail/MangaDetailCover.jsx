@@ -6,11 +6,7 @@ const MangaDetailCover = ({ mangaDetail }) => {
   console.log(tags);
 
   return (
-    <Box
-      marginLeft={{ md: 20 }}
-      lineHeight={7}
-      textAlign={{ base: 'center', md: 'start' }}
-    >
+    <Box lineHeight={7} textAlign={{ base: 'center', md: 'start' }}>
       <Image
         w={96}
         h='xl'
