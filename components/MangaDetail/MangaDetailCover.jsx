@@ -2,6 +2,9 @@ import { Box, Image, Link, Text } from '@chakra-ui/react';
 import { MALSvg } from '../../utils/myanimelist';
 
 const MangaDetailCover = ({ mangaDetail }) => {
+  const tags = JSON.parse(mangaDetail.tags);
+  console.log(tags);
+
   return (
     <Box
       marginLeft={{ md: 20 }}
@@ -30,6 +33,9 @@ const MangaDetailCover = ({ mangaDetail }) => {
         <Text as='span' fontWeight='medium'>
           {mangaDetail.contentRating}
         </Text>
+      </Text>
+      <Text display={{ base: 'none', md: 'block' }}>
+        Tags: {tags.map(tag => tag.localizedName.en).join(', ')}
       </Text>
       <Link href={mangaDetail.mal} isExternal>
         <MALSvg />

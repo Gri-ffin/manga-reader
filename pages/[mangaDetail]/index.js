@@ -48,6 +48,7 @@ export async function getStaticProps(context) {
     { translatedLanguage: ['en'], order: { chapter: 'asc' }, limit: Infinity },
     true
   );
+  console.log(result.tags);
   const transformedChapters = chapters.map(chapter => {
     return {
       id: chapter.id,
@@ -67,7 +68,8 @@ export async function getStaticProps(context) {
     status: result.status,
     chapters: transformedChapters,
     contentRating: result.contentRating,
-    mal: result.links.mal
+    mal: result.links.mal,
+    tags: JSON.stringify(result.tags)
   };
 
   return {
