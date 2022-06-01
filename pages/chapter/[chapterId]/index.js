@@ -19,15 +19,13 @@ const ChapterPage = () => {
     fetchPages();
   }, [chapterId]);
 
-  console.log(pages);
-
   return (
     <Flex alignItems='center' justifyContent='center' flexDir='column'>
       {pages?.map((page, i) => (
         <Image
           src={page}
           height={500}
-          width={500}
+          width={700}
           key={i}
           alt={`page ${i + 1}`}
         />
