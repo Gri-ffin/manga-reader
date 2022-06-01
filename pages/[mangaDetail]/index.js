@@ -98,7 +98,10 @@ export async function getStaticProps(context) {
   await MFA.login('BaylordYama', 'redamohamed0');
   const result = await MFA.Manga.get(mangaDetail);
   const resultCover = await MFA.Cover.get(result.mainCover.id);
-  const chapters = await result.getFeed({ translatedLanguage: ['en'] }, true);
+  const chapters = await result.getFeed(
+    { translatedLanguage: ['en'], order: { chapter: 'asc' }, limit: Infinity },
+    true
+  );
   const transformedChapters = chapters.map(chapter => {
     return {
       id: chapter.id,
@@ -108,16 +111,21 @@ export async function getStaticProps(context) {
       //TODO: add chapter pages with chapter.getReadablePages()
     };
   });
-  transformedChapters.sort((a, b) => {
-    return +a.chapter - +b.chapter;
-  });
+  // remove duplicates chapters from transformedChapters
+  const uniqueChapters = transformedChapters.filter(
+    (item, index) =>
+      transformedChapters.findIndex(
+        item2 => item2.chapter === item.chapter && item2.volume === item.volume
+      ) === index
+  );
+
   let returnValue = {
     id: result.id,
     title: result.title,
     coverImage: resultCover.imageSource,
     description: result.description,
     status: result.status,
-    chapters: transformedChapters,
+    chapters: uniqueChapters,
     contentRating: result.contentRating
   };
 
