@@ -6,7 +6,23 @@ export default async function handler(req, res) {
     await MFA.login('BaylordYama', 'redamohamed0');
     const result = await MFA.Chapter.get(chapterId);
     const resultPages = await result.getReadablePages();
-    return res.json({ pages: resultPages });
+    const manga = await result.manga.resolve();
+    const chapters = await manga.getFeed(
+      {
+        translatedLanguage: ['en'],
+        order: { chapter: 'asc' },
+        limit: Infinity
+      },
+      false
+    );
+    const filteredChapters = chapters.filter(chapter => {
+      return chapter.isExternal === false;
+    });
+    const transformedChapters = filteredChapters.map(chapter => ({
+      id: chapter.id,
+      chapter: chapter.chapter
+    }));
+    return res.json({ pages: resultPages, chapters: transformedChapters });
   } catch (e) {
     res.json({ error: e.message });
   }
