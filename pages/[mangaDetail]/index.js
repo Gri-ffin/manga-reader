@@ -41,7 +41,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const mangaDetail = context.params.mangaDetail;
-  await MFA.login('BaylordYama', 'redamohamed0');
+  await MFA.login(process.env.Username, process.env.Password);
   const result = await MFA.Manga.get(mangaDetail);
   const resultCover = await MFA.Cover.get(result.mainCover.id);
   const chapters = await result.getFeed(
@@ -68,7 +68,7 @@ export async function getStaticProps(context) {
     status: result.status,
     chapters: transformedChapters,
     contentRating: result.contentRating,
-    mal: result.links.mal,
+    mal: result.links.mal ?? '',
     tags: JSON.stringify(result.tags)
   };
 

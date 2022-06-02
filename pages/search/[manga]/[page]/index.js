@@ -61,7 +61,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   let mangatitle = context.params.manga;
   let page = context.params.page;
-  await MFA.login('BaylordYama', 'redamohamed0');
+  await MFA.login(process.env.Username, process.env.Password);
   const allMangas = await MFA.Manga.search(mangatitle);
   const results = await MFA.Manga.search({
     title: mangatitle,

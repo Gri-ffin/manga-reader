@@ -12,7 +12,7 @@ const ChapterPage = () => {
 
   useEffect(() => {
     async function fetchPages() {
-      const { data } = await axios.post('/api/fetch-pages', {
+      const { data } = await axios.post('/api/fetch/fetch-pages', {
         chapterId: chapterId
       });
       setPages(data.pages);
