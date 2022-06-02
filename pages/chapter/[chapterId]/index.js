@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Flex, Select } from '@chakra-ui/react';
+import { Flex, Select } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
