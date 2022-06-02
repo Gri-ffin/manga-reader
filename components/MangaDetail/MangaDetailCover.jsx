@@ -25,7 +25,7 @@ const MangaDetailCover = ({ mangaDetail }) => {
           {mangaDetail.contentRating}
         </Text>
       </Text>
-      <Text display={{ base: 'none', md: 'block' }} mb={2}>
+      <Text display={{ base: 'none', md: 'block' }} mb={2} w={96}>
         Tags: {tags.map(tag => tag.localizedName.en).join(', ')}
       </Text>
       <Link href={mangaDetail.mal} isExternal>
