@@ -1,4 +1,4 @@
-import { Box, Center, Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import MFA from 'mangadex-full-api';
 import MangaDetailWrapper from '../../components/MangaDetail/MangaDetailWrapper';
@@ -32,7 +32,7 @@ export async function getStaticPaths() {
     params: {}
   });
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: data.data.map(manga => ({
       params: { mangaDetail: manga.id }
     }))
@@ -64,7 +64,7 @@ export async function getStaticProps(context) {
     id: result.id,
     title: result.title,
     coverImage: resultCover.imageSource,
-    description: result.description,
+    description: result.description.split('\n')[0],
     status: result.status,
     chapters: transformedChapters,
     contentRating: result.contentRating,
