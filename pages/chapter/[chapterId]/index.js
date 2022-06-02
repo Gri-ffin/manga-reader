@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 const ChapterPage = () => {
   const [pages, setPages] = useState([]);
   const [chapters, setChapters] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('');
   const router = useRouter();
   let chapterId = router.query.chapterId;
 
@@ -23,7 +22,6 @@ const ChapterPage = () => {
   }, [chapterId]);
 
   function changeSelectHandler(e) {
-    setSelectedOption(e.target.value);
     router.push(`/chapter/${e.target.value}`);
   }
 
@@ -42,18 +40,23 @@ const ChapterPage = () => {
       </Flex>
       <Flex alignItems='center' justifyContent='center' my={4}>
         <Select
-          placeholder='Select a non external chapter'
           display='block'
+          value={chapterId}
           bg='gray.700'
           w={80}
-          value={selectedOption}
           onChange={changeSelectHandler}
         >
-          {chapters?.map((chapter, i) => (
-            <option key={i} value={chapter.id}>
-              {chapter.chapter}
-            </option>
-          ))}
+          {chapters?.map(chapter => {
+            return (
+              <option
+                key={chapter.id}
+                value={chapter.id}
+                selected={chapterId == chapter.id}
+              >
+                Chapter {chapter.chapter || 'Oneshot'}
+              </option>
+            );
+          })}
         </Select>
       </Flex>
     </>

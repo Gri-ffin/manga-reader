@@ -22,7 +22,11 @@ export default async function handler(req, res) {
       id: chapter.id,
       chapter: chapter.chapter
     }));
-    return res.json({ pages: resultPages, chapters: transformedChapters });
+    return res.json({
+      pages: resultPages,
+      chapters: transformedChapters,
+      thisChapter: result.chapter
+    });
   } catch (e) {
     res.json({ error: e.message });
   }
