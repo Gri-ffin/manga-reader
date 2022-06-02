@@ -11,7 +11,9 @@ export default function Home({ mangaIds }) {
 
   useEffect(() => {
     async function fetchMangas() {
-      const { data } = await axios.post('/api/fetch-mangas', { mangaIds });
+      const { data } = await axios.post('/api/fetch/fetch-mangas', {
+        mangaIds
+      });
       setMangas(data.transformedResult);
     }
     fetchMangas();
@@ -21,6 +23,12 @@ export default function Home({ mangaIds }) {
     e.preventDefault();
     const inputValue = inputRef.current.value;
     router.push(`/search/${inputValue}/1`);
+  }
+
+  async function handleRandom(e) {
+    e.preventDefault();
+    const { data } = await axios.get('/api/search/random-manga');
+    router.push(`/${data.mangaId}`);
   }
 
   return (
@@ -41,7 +49,7 @@ export default function Home({ mangaIds }) {
           <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleSearch}>
             Submit
           </Button>
-          <Button ml={3} mt={{ base: 3, md: 0 }}>
+          <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleRandom}>
             Random
           </Button>
         </Box>
