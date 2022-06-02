@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Center, SimpleGrid } from '@chakra-ui/react';
+import { Box, Button, Center, Flex, Input, SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import Manga from '../components/Manga';
 
@@ -16,6 +16,22 @@ export default function Home({ mangaIds }) {
 
   return (
     <Box>
+      <Flex
+        justifyContent='center'
+        mt={10}
+        alignItems='center'
+        flexDir={{ base: 'column', md: 'row' }}
+      >
+        <Input placeholder='Search a manga' w='70%' bg='gray.700' />
+        <Box>
+          <Button ml={3} mt={{ base: 3, md: 0 }}>
+            Submit
+          </Button>
+          <Button ml={3} mt={{ base: 3, md: 0 }}>
+            Random
+          </Button>
+        </Box>
+      </Flex>
       <Center fontSize={30}>Latest Uploads</Center>
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
         {mangas?.map(manga => {
