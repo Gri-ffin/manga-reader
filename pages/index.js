@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Box, Button, Center, Flex, Input, SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import Manga from '../components/Manga';
+import { useRouter } from 'next/router';
 
 export default function Home({ mangaIds }) {
   const [mangas, setMangas] = useState([]);
+  const inputRef = useRef();
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchMangas() {
@@ -14,6 +17,12 @@ export default function Home({ mangaIds }) {
     fetchMangas();
   }, [mangaIds]);
 
+  async function handleSearch(e) {
+    e.preventDefault();
+    const inputValue = inputRef.current.value;
+    router.push(`/search/${inputValue}/1`);
+  }
+
   return (
     <Box>
       <Flex
@@ -22,9 +31,14 @@ export default function Home({ mangaIds }) {
         alignItems='center'
         flexDir={{ base: 'column', md: 'row' }}
       >
-        <Input placeholder='Search a manga' w='70%' bg='gray.700' />
+        <Input
+          placeholder='Search a manga'
+          w='70%'
+          bg='gray.700'
+          ref={inputRef}
+        />
         <Box>
-          <Button ml={3} mt={{ base: 3, md: 0 }}>
+          <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleSearch}>
             Submit
           </Button>
           <Button ml={3} mt={{ base: 3, md: 0 }}>
