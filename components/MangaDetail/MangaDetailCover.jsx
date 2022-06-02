@@ -28,9 +28,11 @@ const MangaDetailCover = ({ mangaDetail }) => {
       <Text display={{ base: 'none', md: 'block' }} mb={2} w={96}>
         Tags: {tags.map(tag => tag.localizedName.en).join(', ')}
       </Text>
-      <Link href={mangaDetail.mal} isExternal>
-        <MALSvg />
-      </Link>
+      {mangaDetail.mal.length > 1 && (
+        <Link href={mangaDetail.mal} isExternal>
+          <MALSvg />
+        </Link>
+      )}
     </Box>
   );
 };
