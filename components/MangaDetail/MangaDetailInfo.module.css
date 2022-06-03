@@ -7,8 +7,18 @@
     color: skyblue;
 }
 
+.reactMarkDown ul li a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
 .reactMarkDown p a {
     display: block;
     margin-top: .5em;
     color: violet;
+}
+
+.reactMarkDown p a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
