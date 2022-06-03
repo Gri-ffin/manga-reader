@@ -9,7 +9,14 @@ const MangaDetailInfo = ({ mangaDetail }) => {
       <Text as='h3' fontSize={32} textDecor='underline' textUnderlineOffset={3}>
         Description
       </Text>
-      <ReactMarkdown className={style.reactMarkDown}>
+      <ReactMarkdown
+        components={{
+          a: ({ node, ...props }) => (
+            <a target='_blank' rel='noopener nofollow noreferrer' {...props} />
+          )
+        }}
+        className={style.reactMarkDown}
+      >
         {mangaDetail.description}
       </ReactMarkdown>
       <Text
