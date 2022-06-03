@@ -21,8 +21,12 @@ export default function Home({ mangaIds }) {
 
   async function handleSearch(e) {
     e.preventDefault();
+    if (inputRef.current.value.trim().length <= 0) {
+      return;
+    }
     const inputValue = inputRef.current.value;
-    router.push(`/search/${inputValue}/1`);
+    let trimedInputValue = inputValue.trim();
+    router.push(`/search/${trimedInputValue}/1`);
   }
 
   async function handleRandom(e) {
