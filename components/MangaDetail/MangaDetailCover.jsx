@@ -3,7 +3,6 @@ import { MALSvg } from '../../utils/myanimelist';
 
 const MangaDetailCover = ({ mangaDetail }) => {
   const tags = JSON.parse(mangaDetail.tags);
-  console.log(tags);
 
   return (
     <Box lineHeight={7} textAlign={{ base: 'center', md: 'start' }}>
