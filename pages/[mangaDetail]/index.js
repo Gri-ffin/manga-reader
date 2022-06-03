@@ -64,7 +64,7 @@ export async function getStaticProps(context) {
     id: result.id,
     title: result.title,
     coverImage: resultCover.imageSource,
-    description: result.description.split('\n')[0],
+    description: result.description,
     status: result.status,
     chapters: transformedChapters,
     contentRating: result.contentRating,
