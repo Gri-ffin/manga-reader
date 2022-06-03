@@ -28,10 +28,6 @@ const ChapterPage = () => {
     topPageRef.current.scrollIntoView({ behavior: 'smooth' });
   }
 
-  function scrollToBottom() {
-    bottomPageRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-
   function changeSelectHandler(e) {
     router.push(`/chapter/${e.target.value}`);
   }
