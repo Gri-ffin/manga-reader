@@ -13,10 +13,12 @@ export default function handler(req, res) {
     return Promise.all(newResult);
   }
 
-  const { mangaIds } = req.body;
-  MFA.login(process.env.Username, process.env.Password).then(async () => {
-    const result = await MFA.Manga.getMultiple(...mangaIds);
-    const transformedResult = await transformArray(result);
-    res.json({ transformedResult });
-  });
+  if (req.method === 'POST') {
+    const { mangaIds } = req.body;
+    MFA.login(process.env.Username, process.env.Password).then(async () => {
+      const result = await MFA.Manga.getMultiple(...mangaIds);
+      const transformedResult = await transformArray(result);
+      res.json({ transformedResult });
+    });
+  }
 }
