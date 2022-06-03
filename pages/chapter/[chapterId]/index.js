@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Flex, Select } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Scroller from '../../../components/Chapter/Scroller';
 
 const ChapterPage = () => {
   const [pages, setPages] = useState([]);
   const [chapters, setChapters] = useState([]);
   const router = useRouter();
+  const topPageRef = useRef(null);
+  const bottomPageRef = useRef(null);
   let chapterId = router.query.chapterId;
 
   useEffect(() => {
@@ -21,13 +24,26 @@ const ChapterPage = () => {
     fetchPages();
   }, [chapterId]);
 
+  function scrollToTop() {
+    topPageRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function scrollToBottom() {
+    bottomPageRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
   function changeSelectHandler(e) {
     router.push(`/chapter/${e.target.value}`);
   }
 
   return (
     <>
-      <Flex alignItems='center' justifyContent='center' flexDir='column'>
+      <Flex
+        alignItems='center'
+        justifyContent='center'
+        flexDir='column'
+        ref={topPageRef}
+      >
         {pages?.map((page, i) => (
           <Image
             src={page}
@@ -38,7 +54,13 @@ const ChapterPage = () => {
           />
         ))}
       </Flex>
-      <Flex alignItems='center' justifyContent='center' my={4}>
+      <Flex
+        alignItems='center'
+        justifyContent='center'
+        my={4}
+        ref={bottomPageRef}
+      >
+        <Scroller image='top.png' fn={scrollToTop} />
         <Select
           display='block'
           value={chapterId}
