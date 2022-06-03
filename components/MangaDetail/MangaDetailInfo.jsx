@@ -1,6 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 import ChapterLink from './Chapter/ChapterLink';
 import ReactMarkdown from 'react-markdown';
+import style from './MangaDetailInfo.module.css';
 
 const MangaDetailInfo = ({ mangaDetail }) => {
   return (
@@ -8,7 +9,9 @@ const MangaDetailInfo = ({ mangaDetail }) => {
       <Text as='h3' fontSize={32} textDecor='underline' textUnderlineOffset={3}>
         Description
       </Text>
-      <ReactMarkdown>{mangaDetail.description}</ReactMarkdown>
+      <ReactMarkdown className={style.reactMarkDown}>
+        {mangaDetail.description}
+      </ReactMarkdown>
       <Text
         as='h3'
         fontSize={24}

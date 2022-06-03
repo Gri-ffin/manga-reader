@@ -1,0 +1,14 @@
+.reactMarkDown strong{
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.reactMarkDown ul li a {
+    color: skyblue;
+}
+
+.reactMarkDown p a {
+    display: block;
+    margin-top: .5em;
+    color: violet;
+}
