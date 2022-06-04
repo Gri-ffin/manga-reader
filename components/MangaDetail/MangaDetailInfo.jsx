@@ -29,9 +29,11 @@ const MangaDetailInfo = ({ mangaDetail }) => {
         Chapters
       </Text>
       <Box pt={1} pl={3} overflowY='scroll' h={96} w='full' bg='gray.700'>
-        {mangaDetail.chapters.map(chapter => {
-          return <ChapterLink key={chapter.id} chapter={chapter} />;
-        })}
+        {mangaDetail.chapters.length
+          ? mangaDetail.chapters.map(chapter => {
+              return <ChapterLink key={chapter.id} chapter={chapter} />;
+            })
+          : '-No English chapters available.'}
       </Box>
     </Box>
   );
