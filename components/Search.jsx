@@ -24,27 +24,34 @@ const Search = () => {
   }
 
   return (
-    <Flex
-      justifyContent='center'
-      mt={10}
-      alignItems='center'
-      flexDir={{ base: 'column', md: 'row' }}
-    >
-      <Input
-        placeholder='Search a manga'
-        w='70%'
-        bg='gray.700'
-        ref={inputRef}
-      />
-      <Box>
-        <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleSearch}>
-          Submit
-        </Button>
-        <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleRandom}>
-          Random
-        </Button>
-      </Box>
-    </Flex>
+    <form>
+      <Flex
+        justifyContent='center'
+        mt={10}
+        alignItems='center'
+        flexDir={{ base: 'column', md: 'row' }}
+      >
+        <Input
+          placeholder='Search a manga'
+          w='70%'
+          bg='gray.700'
+          ref={inputRef}
+        />
+        <Box>
+          <Button
+            ml={3}
+            mt={{ base: 3, md: 0 }}
+            onClick={handleSearch}
+            type='submit'
+          >
+            Submit
+          </Button>
+          <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleRandom}>
+            Random
+          </Button>
+        </Box>
+      </Flex>
+    </form>
   );
 };
 
