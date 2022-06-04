@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Box, Button, Flex, Input } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const Search = () => {
   const router = useRouter();
