@@ -22,7 +22,7 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
 
   return (
     <Box>
-      <Center as='h1' fontWeight='bold' fontSize={56}>
+      <Center as='h1' fontWeight='bold' fontSize={56} textAlign='center'>
         {searchTerm}
       </Center>
       <Search />
@@ -37,7 +37,7 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
             Previous
           </Button>
         )}
-        {page >= 1 && (page - 1) * 6 <= resultsLength && (
+        {results.length === 6 && (
           <Button px={7} onClick={handleNextClick}>
             Next
           </Button>
