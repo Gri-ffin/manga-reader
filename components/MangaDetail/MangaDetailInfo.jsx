@@ -17,7 +17,7 @@ const MangaDetailInfo = ({ mangaDetail }) => {
         }}
         className={style.reactMarkDown}
       >
-        {mangaDetail.description}
+        {mangaDetail.description || 'No description provided.'}
       </ReactMarkdown>
       <Text
         as='h3'
