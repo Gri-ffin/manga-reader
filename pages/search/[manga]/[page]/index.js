@@ -9,6 +9,8 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
   const router = useRouter();
   let page = router.query.page;
 
+  console.log(page * 6, resultsLength);
+
   function handlePreviousClick(e) {
     e.preventDefault();
     router.push(`/search/${searchTerm}/${parseInt(page) - 1}`);
@@ -27,7 +29,7 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
       </Center>
       <Search />
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} mt={7}>
-        {results?.map(manga => {
+        {results.map(manga => {
           return <Manga key={manga.id} manga={manga} />;
         })}
       </SimpleGrid>
@@ -37,7 +39,7 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
             Previous
           </Button>
         )}
-        {results.length === 6 && (
+        {page * 6 < resultsLength && (
           <Button px={7} onClick={handleNextClick}>
             Next
           </Button>
@@ -64,7 +66,10 @@ export async function getStaticProps(context) {
   let mangatitle = context.params.manga;
   let page = context.params.page;
   await MFA.login(process.env.Username, process.env.Password);
-  const allMangas = await MFA.Manga.search(mangatitle);
+  const allMangas = await MFA.Manga.search({
+    title: mangatitle,
+    limit: Infinity
+  });
   const results = await MFA.Manga.search({
     title: mangatitle,
     limit: 6,
