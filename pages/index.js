@@ -3,11 +3,10 @@ import { Box, Button, Center, Flex, Input, SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import Manga from '../components/Manga';
 import { useRouter } from 'next/router';
+import Search from '../components/Search';
 
 export default function Home({ mangaIds }) {
   const [mangas, setMangas] = useState([]);
-  const inputRef = useRef();
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchMangas() {
@@ -19,45 +18,9 @@ export default function Home({ mangaIds }) {
     fetchMangas();
   }, [mangaIds]);
 
-  async function handleSearch(e) {
-    e.preventDefault();
-    if (inputRef.current.value.trim().length <= 0) {
-      return;
-    }
-    const inputValue = inputRef.current.value;
-    let trimedInputValue = inputValue.trim();
-    router.push(`/search/${trimedInputValue}/1`);
-  }
-
-  async function handleRandom(e) {
-    e.preventDefault();
-    const { data } = await axios.get('/api/search/random-manga');
-    router.push(`/${data.mangaId}`);
-  }
-
   return (
     <Box>
-      <Flex
-        justifyContent='center'
-        mt={10}
-        alignItems='center'
-        flexDir={{ base: 'column', md: 'row' }}
-      >
-        <Input
-          placeholder='Search a manga'
-          w='70%'
-          bg='gray.700'
-          ref={inputRef}
-        />
-        <Box>
-          <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleSearch}>
-            Submit
-          </Button>
-          <Button ml={3} mt={{ base: 3, md: 0 }} onClick={handleRandom}>
-            Random
-          </Button>
-        </Box>
-      </Flex>
+      <Search />
       <Center fontSize={30}>Latest Uploads</Center>
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
         {mangas?.map(manga => {
