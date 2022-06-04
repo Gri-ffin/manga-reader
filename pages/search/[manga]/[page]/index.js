@@ -3,6 +3,7 @@ import MFA from 'mangadex-full-api';
 import axios from 'axios';
 import Manga from '../../../../components/Manga';
 import { useRouter } from 'next/router';
+import Search from '../../../../components/Search';
 
 export default function MangaSearch({ results, searchTerm, resultsLength }) {
   const router = useRouter();
@@ -24,7 +25,8 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
       <Center as='h1' fontWeight='bold' fontSize={56}>
         {searchTerm}
       </Center>
-      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
+      <Search />
+      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} mt={7}>
         {results?.map(manga => {
           return <Manga key={manga.id} manga={manga} />;
         })}
