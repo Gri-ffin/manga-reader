@@ -5,11 +5,17 @@ import Manga from '../../../../components/Manga';
 import { useRouter } from 'next/router';
 import Search from '../../../../components/Search';
 
+// capitilize every first letter of a word
+function capitalize(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
 export default function MangaSearch({ results, searchTerm, resultsLength }) {
   const router = useRouter();
   let page = router.query.page;
-
-  console.log(page * 6, resultsLength);
+  let lastPage = Math.ceil(resultsLength / 6);
 
   function handlePreviousClick(e) {
     e.preventDefault();
@@ -25,9 +31,12 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
   return (
     <Box>
       <Center as='h1' fontWeight='bold' fontSize={56} textAlign='center'>
-        {searchTerm}
+        {capitalize(searchTerm)}
       </Center>
       <Search />
+      <Center as='h3' fontWeight='bold' fontSize='2xl' mt={5}>
+        Page {page} of {lastPage}
+      </Center>
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} mt={7}>
         {results.map(manga => {
           return <Manga key={manga.id} manga={manga} />;
