@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 const MangaDetailCover = ({ mangaDetail }) => {
   const tags = JSON.parse(mangaDetail.tags);
-  console.log(mangaDetail.coverImage);
 
   return (
     <Box lineHeight={7} textAlign={{ base: 'center', md: 'start' }}>
