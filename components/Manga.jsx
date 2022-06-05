@@ -18,6 +18,8 @@ const Manga = ({ manga }) => {
           width={400}
           height={500}
           alt={manga.title}
+          placeholder='blur'
+          blurDataURL={manga.coverImage}
           style={{ cursor: 'pointer' }}
           onClick={handleClick}
         />
