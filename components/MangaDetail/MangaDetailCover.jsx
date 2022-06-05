@@ -1,14 +1,16 @@
-import { Box, Image, Link, Text } from '@chakra-ui/react';
+import { Box, Link, Text } from '@chakra-ui/react';
 import { MALSvg } from '../../utils/myanimelist';
+import Image from 'next/image';
 
 const MangaDetailCover = ({ mangaDetail }) => {
   const tags = JSON.parse(mangaDetail.tags);
+  console.log(mangaDetail.coverImage);
 
   return (
     <Box lineHeight={7} textAlign={{ base: 'center', md: 'start' }}>
       <Image
-        w={96}
-        h='xl'
+        width={500}
+        height={700}
         src={mangaDetail.coverImage}
         alt={mangaDetail.title}
       />
