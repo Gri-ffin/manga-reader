@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Flex, Select } from '@chakra-ui/react';
+import { Flex, Select, Spinner } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -47,6 +47,11 @@ const ChapterPage = () => {
             width={700}
             key={i}
             alt={`page ${i + 1}`}
+            fallback={
+              <Flex h='100vh' justifyContent='center' align='center'>
+                <Spinner size='xl' />
+              </Flex>
+            }
           />
         ))}
       </Flex>
