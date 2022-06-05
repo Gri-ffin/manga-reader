@@ -18,7 +18,7 @@ const Manga = ({ manga }) => {
           width={400}
           height={500}
           alt={manga.title}
-          cursor='pointer'
+          style={{ cursor: 'pointer' }}
           onClick={handleClick}
         />
         <Text noOfLines={1} fontSize={{ sm: 'sm', md: 'md' }}>
