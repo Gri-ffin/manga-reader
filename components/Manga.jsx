@@ -1,5 +1,6 @@
-import { Box, Center, Image, Text } from '@chakra-ui/react';
+import { Box, Center, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const Manga = ({ manga }) => {
   const router = useRouter();
@@ -14,8 +15,8 @@ const Manga = ({ manga }) => {
       <Center flexDir='column'>
         <Image
           src={manga.coverImage}
-          w='50%'
-          height='10%'
+          width={400}
+          height={500}
           alt={manga.title}
           cursor='pointer'
           onClick={handleClick}
