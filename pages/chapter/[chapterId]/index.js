@@ -40,20 +40,21 @@ const ChapterPage = () => {
         flexDir='column'
         ref={topPageRef}
       >
-        {pages?.map((page, i) => (
-          <Image
-            src={page}
-            height={700}
-            width={700}
-            key={i}
-            alt={`page ${i + 1}`}
-            fallback={
-              <Flex h='100vh' justifyContent='center' align='center'>
-                <Spinner size='xl' />
-              </Flex>
-            }
-          />
-        ))}
+        {pages?.length > 0 ? (
+          pages.map((page, i) => (
+            <Image
+              src={page}
+              height={700}
+              width={700}
+              key={i}
+              alt={`page ${i + 1}`}
+            />
+          ))
+        ) : (
+          <Flex h='100vh' justifyContent='center' align='center'>
+            <Spinner size='xl' />
+          </Flex>
+        )}
       </Flex>
       <Flex
         alignItems='center'
@@ -65,6 +66,7 @@ const ChapterPage = () => {
         <Select
           display='block'
           value={chapterId}
+          placeholder='Select Chapter'
           bg='gray.700'
           w={80}
           onChange={changeSelectHandler}
