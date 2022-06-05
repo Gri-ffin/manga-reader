@@ -13,9 +13,9 @@ const ChapterLink = ({ chapter }) => {
             my={2}
             textUnderlineOffset={3}
           >
-            {chapter.chapter ? `Chapter ${chapter.chapter}: ` : ''}
+            {chapter.chapter ? `Chapter ${chapter.chapter}` : ''}
             <Text as='span' fontWeight='medium'>
-              {chapter.title || ''}
+              {chapter.title ? `: ${chapter.title}` : ''}
             </Text>
           </Link>
         </NextLink>
