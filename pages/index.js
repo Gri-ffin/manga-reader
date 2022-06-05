@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import { Box, Button, Center, Flex, Input, SimpleGrid } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { Box, Center, Flex, SimpleGrid, Spinner } from '@chakra-ui/react';
 import axios from 'axios';
 import Manga from '../components/Manga';
-import { useRouter } from 'next/router';
 import Search from '../components/Search';
 
 export default function Home({ mangaIds }) {
@@ -22,16 +21,28 @@ export default function Home({ mangaIds }) {
     <Box>
       <Search />
       <Center fontSize={30}>Latest Uploads</Center>
-      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
-        {mangas?.map(manga => {
-          return <Manga key={manga.id} manga={manga} />;
-        })}
-      </SimpleGrid>
+      {mangas.length > 0 ? (
+        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
+          {mangas?.map(manga => (
+            <Manga key={manga.id} manga={manga} />
+          ))}
+        </SimpleGrid>
+      ) : (
+        <Flex h='100vh' justifyContent='center' alignItems='center'>
+          <Spinner
+            size='xl'
+            thickness='4px'
+            speed='.70s'
+            emptyColor='gray.200'
+            color='blue.500'
+          />
+        </Flex>
+      )}
     </Box>
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { data } = await axios.get('https://api.mangadex.org/manga', {
     params: {}
   });
