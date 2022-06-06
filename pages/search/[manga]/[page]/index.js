@@ -4,6 +4,7 @@ import axios from 'axios';
 import Manga from '../../../../components/Manga';
 import { useRouter } from 'next/router';
 import Search from '../../../../components/Search';
+import Head from 'next/head';
 
 // capitilize every first letter of a word
 function capitalize(str) {
@@ -29,32 +30,37 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
   }
 
   return (
-    <Box>
-      <Center as='h1' fontWeight='bold' fontSize={56} textAlign='center'>
-        {capitalize(searchTerm)}
-      </Center>
-      <Search />
-      <Center as='h3' fontWeight='bold' fontSize='2xl' mt={5}>
-        Page {page} of {lastPage}
-      </Center>
-      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} mt={7}>
-        {results.map(manga => {
-          return <Manga key={manga.id} manga={manga} />;
-        })}
-      </SimpleGrid>
-      <Flex alignItems='center' justifyContent='center' mb={5}>
-        {page > 1 && (
-          <Button mx={5} onClick={handlePreviousClick}>
-            Previous
-          </Button>
-        )}
-        {page * 6 < resultsLength && (
-          <Button px={7} onClick={handleNextClick}>
-            Next
-          </Button>
-        )}
-      </Flex>
-    </Box>
+    <>
+      <Head>
+        <title>Manga Reader - {searchTerm}</title>
+      </Head>
+      <Box>
+        <Center as='h1' fontWeight='bold' fontSize={56} textAlign='center'>
+          {capitalize(searchTerm)}
+        </Center>
+        <Search />
+        <Center as='h3' fontWeight='bold' fontSize='2xl' mt={5}>
+          Page {page} of {lastPage}
+        </Center>
+        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} mt={7}>
+          {results.map(manga => {
+            return <Manga key={manga.id} manga={manga} />;
+          })}
+        </SimpleGrid>
+        <Flex alignItems='center' justifyContent='center' mb={5}>
+          {page > 1 && (
+            <Button mx={5} onClick={handlePreviousClick}>
+              Previous
+            </Button>
+          )}
+          {page * 6 < resultsLength && (
+            <Button px={7} onClick={handleNextClick}>
+              Next
+            </Button>
+          )}
+        </Flex>
+      </Box>
+    </>
   );
 }
 

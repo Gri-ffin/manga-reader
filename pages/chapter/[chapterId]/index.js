@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import Scroller from '../../../components/Chapter/Scroller';
 import NextLink from 'next/link';
+import Head from 'next/head';
 
 const ChapterPage = () => {
   const [pages, setPages] = useState([]);
@@ -42,6 +43,9 @@ const ChapterPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Manga Reader</title>
+      </Head>
       {loading && pages.length ? (
         <Flex h='100vh' justifyContent='center' alignItems='center'>
           <Spinner size='xl' />

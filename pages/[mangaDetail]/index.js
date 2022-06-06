@@ -4,24 +4,30 @@ import MFA from 'mangadex-full-api';
 import MangaDetailWrapper from '../../components/MangaDetail/MangaDetailWrapper';
 import MangaDetailCover from '../../components/MangaDetail/MangaDetailCover';
 import MangaDetailInfo from '../../components/MangaDetail/MangaDetailInfo';
+import Head from 'next/head';
 
 const MangaDetail = ({ mangaDetail }) => {
   return (
-    <Box my={5} overflowY='scroll' ml={{ xl: 40 }}>
-      <Text
-        as='h2'
-        fontSize={{ sm: 32, md: 40 }}
-        mb={5}
-        textAlign='center'
-        mr={{ md: 40 }}
-      >
-        {mangaDetail.title}
-      </Text>
-      <MangaDetailWrapper>
-        <MangaDetailCover mangaDetail={mangaDetail} />
-        <MangaDetailInfo mangaDetail={mangaDetail} />
-      </MangaDetailWrapper>
-    </Box>
+    <>
+      <Head>
+        <title>Manga Reader - {mangaDetail.title}</title>
+      </Head>
+      <Box my={5} overflowY='scroll' ml={{ xl: 40 }}>
+        <Text
+          as='h2'
+          fontSize={{ sm: 32, md: 40 }}
+          mb={5}
+          textAlign='center'
+          mr={{ md: 40 }}
+        >
+          {mangaDetail.title}
+        </Text>
+        <MangaDetailWrapper>
+          <MangaDetailCover mangaDetail={mangaDetail} />
+          <MangaDetailInfo mangaDetail={mangaDetail} />
+        </MangaDetailWrapper>
+      </Box>
+    </>
   );
 };
 
