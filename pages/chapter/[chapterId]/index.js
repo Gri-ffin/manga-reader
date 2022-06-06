@@ -73,11 +73,7 @@ const ChapterPage = () => {
         >
           {chapters?.map(chapter => {
             return (
-              <option
-                key={chapter.id}
-                value={chapter.id}
-                selected={chapterId == chapter.id}
-              >
+              <option key={chapter.id} value={chapter.id}>
                 Chapter {chapter.chapter || 'Oneshot'}
               </option>
             );
