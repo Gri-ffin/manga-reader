@@ -12,6 +12,8 @@ const MangaDetailCover = ({ mangaDetail }) => {
         height={700}
         src={mangaDetail.coverImage}
         alt={mangaDetail.title}
+        placeholder='blur'
+        blurDataURL={mangaDetail.coverImage}
       />
       <Text fontWeight='bold' textDecor='underline' textUnderlineOffset={3}>
         Status:{' '}
