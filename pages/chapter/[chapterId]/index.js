@@ -60,8 +60,7 @@ const ChapterPage = () => {
           {pages?.map((page, i) => (
             <Image
               src={page}
-              height={700}
-              width={700}
+              objectFit='contain'
               key={i}
               alt={`page ${i + 1}`}
               title={`page ${i + 1}`}
