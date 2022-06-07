@@ -26,7 +26,7 @@ const MangaDetailInfo = ({ mangaDetail }) => {
         textDecor='underline'
         textUnderlineOffset={3}
       >
-        Chapters
+        English Chapters
       </Text>
       <Box pt={1} pl={3} overflowY='scroll' h={96} w='full' bg='gray.700'>
         {mangaDetail.chapters.length
