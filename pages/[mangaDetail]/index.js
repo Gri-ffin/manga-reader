@@ -74,7 +74,9 @@ export async function getStaticProps(context) {
     chapters: transformedChapters,
     contentRating: result.contentRating,
     mal: result.links.mal ?? '',
-    tags: JSON.stringify(result.tags)
+    tags: JSON.stringify(result.tags),
+    aniList: result.links.al ?? '',
+    mangaUpdates: result.links.mu ?? ''
   };
 
   return {
