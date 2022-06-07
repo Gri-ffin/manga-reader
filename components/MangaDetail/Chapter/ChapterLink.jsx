@@ -15,7 +15,11 @@ const ChapterLink = ({ chapter }) => {
           >
             {chapter.chapter ? `Chapter ${chapter.chapter}` : ''}
             <Text as='span' fontWeight='medium'>
-              {chapter.title ? `: ${chapter.title}` : ''}
+              {chapter.title === 'Oneshot'
+                ? `${chapter.title}`
+                : chapter.title
+                ? `: ${chapter.title}`
+                : ''}
             </Text>
           </Link>
         </NextLink>
