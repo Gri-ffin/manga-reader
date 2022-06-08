@@ -91,6 +91,7 @@ const ChapterPage = () => {
         )}
         <Select
           display='block'
+          my={5}
           value={chapterId}
           placeholder='Select Chapter'
           bg='gray.700'
