@@ -69,7 +69,7 @@ const ChapterPage = () => {
         </Flex>
       )}
       <Flex
-        alignItems='center'
+        flexWrap='wrap'
         justifyContent='space-evenly'
         my={4}
         ref={bottomPageRef}
@@ -82,6 +82,7 @@ const ChapterPage = () => {
               px={5}
               rounded='md'
               py={3}
+              my={5}
               _hover={{ textDecor: 'none', bg: 'gray.500' }}
             >
               Previous
@@ -112,6 +113,7 @@ const ChapterPage = () => {
               rounded='md'
               py={3}
               px={5}
+              my={5}
             >
               Next
             </Link>
