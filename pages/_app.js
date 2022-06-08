@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider>
       <NextNProgress />
       <Component {...pageProps} />
-      <Center as='footer' mt={6} mb={2}>
+      <Center as='footer' mt={6} mb={2} textAlign='center'>
         Powered by Mangadex - Yassine Tadlaoui &copy; {year}
       </Center>
     </ChakraProvider>
