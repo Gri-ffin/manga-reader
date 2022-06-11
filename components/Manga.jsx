@@ -14,12 +14,12 @@ const Manga = ({ manga }) => {
     <Box>
       <Center flexDir='column'>
         <Image
-          src={manga.coverImage}
+          src={manga.coverImage || '/images/no-cover.jpeg'}
           width={400}
           height={500}
           alt={manga.title}
           placeholder='blur'
-          blurDataURL={manga.coverImage}
+          blurDataURL={manga.coverImage || '/images/no-cover.jpeg'}
           style={{ cursor: 'pointer' }}
           onClick={handleClick}
         />

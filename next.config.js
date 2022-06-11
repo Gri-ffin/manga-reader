@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['uploads.mangadex.org']
+    domains: ['uploads.mangadex.org', 'mangadex.org']
   }
 };
 

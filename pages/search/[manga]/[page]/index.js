@@ -102,11 +102,13 @@ export async function getStaticProps(context) {
 
 function transformArray(array) {
   const newResult = array.map(async manga => {
-    let coverImage = await MFA.Cover.get(manga.mainCover.id);
+    let coverImage = manga.mainCover
+      ? await MFA.Cover.get(manga.mainCover.id)
+      : '';
     return {
       id: manga.id,
       title: manga.title,
-      coverImage: coverImage.imageSource,
+      coverImage: coverImage ? coverImage.imageSource : '',
       description: manga.description
     };
   });

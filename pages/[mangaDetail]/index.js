@@ -49,7 +49,9 @@ export async function getStaticProps(context) {
   const mangaDetail = context.params.mangaDetail;
   await MFA.login(process.env.Username, process.env.Password);
   const result = await MFA.Manga.get(mangaDetail);
-  const resultCover = await MFA.Cover.get(result.mainCover.id);
+  const resultCover = result.mainCover
+    ? await MFA.Cover.get(result.mainCover.id)
+    : '';
   const chapters = await result.getFeed(
     { translatedLanguage: ['en'], order: { chapter: 'asc' }, limit: Infinity },
     true
@@ -68,7 +70,7 @@ export async function getStaticProps(context) {
   let returnValue = {
     id: result.id,
     title: result.title,
-    coverImage: resultCover.imageSource,
+    coverImage: resultCover ? resultCover.imageSource : '',
     description: result.description,
     status: result.status,
     chapters: transformedChapters,

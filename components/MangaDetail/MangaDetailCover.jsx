@@ -14,10 +14,10 @@ const MangaDetailCover = ({ mangaDetail }) => {
       <Image
         width={500}
         height={700}
-        src={mangaDetail.coverImage}
+        src={mangaDetail.coverImage || '/images/no-cover.jpeg'}
         alt={mangaDetail.title}
         placeholder='blur'
-        blurDataURL={mangaDetail.coverImage}
+        blurDataURL={mangaDetail.coverImage || '/images/no-cover.jpeg'}
       />
       <MangaCoverDetail title='Status' info={mangaDetail.status} />
       <MangaCoverDetail
