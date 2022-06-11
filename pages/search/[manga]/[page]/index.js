@@ -44,7 +44,7 @@ export default function MangaSearch({ results, searchTerm, resultsLength }) {
         </Center>
         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} mt={7}>
           {results.map(manga => {
-            return <Manga key={manga.id} manga={manga} />;
+            return <Manga key={manga?.id} manga={manga} />;
           })}
         </SimpleGrid>
         <Flex alignItems='center' justifyContent='center' mb={5}>
