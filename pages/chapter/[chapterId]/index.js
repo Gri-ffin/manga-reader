@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import { Flex, Link, Select, Spinner } from '@chakra-ui/react';
+import { Link, Select, Flex } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Scroller from '../../../components/Chapter/Scroller';
 import NextLink from 'next/link';
 import Head from 'next/head';
+import Spinner from '../../../components/Spinner';
 
 const ChapterPage = () => {
   const [pages, setPages] = useState([]);
@@ -47,9 +48,7 @@ const ChapterPage = () => {
         <title>Manga Reader</title>
       </Head>
       {loading && pages.length ? (
-        <Flex h='100vh' justifyContent='center' alignItems='center'>
-          <Spinner size='xl' />
-        </Flex>
+        <Spinner />
       ) : (
         <Flex
           alignItems='center'

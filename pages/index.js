@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Box, Center, Flex, SimpleGrid, Spinner } from '@chakra-ui/react';
+import { Box, Center, SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import Manga from '../components/Manga';
 import Search from '../components/Search';
 import Head from 'next/head';
+import Spinner from '../components/Spinner';
 
 export default function Home({ mangaIds }) {
   const [mangas, setMangas] = useState([]);
@@ -33,15 +34,7 @@ export default function Home({ mangaIds }) {
             ))}
           </SimpleGrid>
         ) : (
-          <Flex h='100vh' justifyContent='center' alignItems='center'>
-            <Spinner
-              size='xl'
-              thickness='4px'
-              speed='.70s'
-              emptyColor='gray.200'
-              color='blue.500'
-            />
-          </Flex>
+          <Spinner />
         )}
       </Box>
     </>
