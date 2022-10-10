@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Link, Select, Flex } from '@chakra-ui/react';
+import { Link, Select, Flex, Box, Button } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -47,6 +47,20 @@ const ChapterPage = () => {
       <Head>
         <title>Manga Reader</title>
       </Head>
+      <Box textAlign='center' my={5}>
+        <NextLink href='/'>
+          <Button
+            bg='gray.600'
+            w={{
+              lg: 'full',
+              base: '56'
+            }}
+            maxW='container.lg'
+          >
+            Home Page
+          </Button>
+        </NextLink>
+      </Box>
       {loading && pages.length ? (
         <Spinner />
       ) : (
