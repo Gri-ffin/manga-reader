@@ -15,16 +15,18 @@ const Manga = ({ manga }) => {
       <Center flexDir='column'>
         <Image
           src={manga.coverImage || '/images/no-cover.jpeg'}
-          width={400}
-          height={500}
+          width={300}
+          height={400}
           alt={manga.title}
           placeholder='blur'
           blurDataURL={manga.coverImage || '/images/no-cover.jpeg'}
           style={{ cursor: 'pointer' }}
           onClick={handleClick}
         />
-        <Text noOfLines={1} fontSize={{ sm: 'sm', md: 'md' }}>
-          {manga.title}
+        <Text fontSize={{ sm: 'sm', md: 'md' }}>
+          {manga.title.length < 30
+            ? manga.title
+            : manga.title.substring(0, 30) + '...'}
         </Text>
       </Center>
     </Box>
